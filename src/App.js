@@ -1,16 +1,25 @@
+import { useState } from "react";
+import { convert } from "./convert/convert";
+
 function App() {
-  const text = ''
+  const [text, setText] = useState("");
 
   return (
     <div>
-      <input type='text' />
+      <label htmlFor="converter" style={{ display: "block" }}>
+        Converter
+      </label>
+      <input
+        id="converter"
+        type="text"
+        value={text}
+        onChange={(event) => setText(event.target.value)}
+      />
       <div>
-        <p>
-          Output: {text}
-        </p>
+        <p data-testid="output">Output: {convert(text)}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
